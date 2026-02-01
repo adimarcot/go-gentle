@@ -477,6 +477,75 @@
             font-size: 0.95rem;
         }
 
+        /* Reviews Section */
+        .reviews {
+            padding: 5rem 2rem;
+            background: var(--color-bg);
+        }
+
+        .reviews-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-color: var(--color-accent);
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: var(--color-accent);
+            opacity: 0.3;
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+
+        .review-stars {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-author {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        .review-author strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
         /* Contact Section */
         .contact {
             padding: 5rem 2rem;
@@ -598,6 +667,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
             .lightbox-nav {
                 width: 50px;
                 height: 50px;
@@ -675,22 +748,22 @@
         
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightbox(0)">
-                <img src="foto-1.jpg.jpeg" alt="Cucina moderna attrezzata" loading="lazy">
+                <img src="foto-1.jpg" alt="Cucina moderna attrezzata" loading="lazy">
             </div>
             <div class="gallery-item" onclick="openLightbox(1)">
-                <img src="foto-2.jpg.jpeg" alt="Zona living soppalcata" loading="lazy">
+                <img src="foto-2.jpg" alt="Zona living soppalcata" loading="lazy">
             </div>
             <div class="gallery-item" onclick="openLightbox(2)">
-                <img src="foto-3.jpg.avif" alt="Camera da letto elegante" loading="lazy">
+                <img src="foto-3.jpg" alt="Camera da letto elegante" loading="lazy">
             </div>
             <div class="gallery-item" onclick="openLightbox(3)">
-                <img src="foto-4.jpg.jpeg" alt="Bagno con vasca idromassaggio" loading="lazy">
+                <img src="foto-4.jpg" alt="Bagno con vasca idromassaggio" loading="lazy">
             </div>
             <div class="gallery-item" onclick="openLightbox(4)">
-                <img src="foto-5.jpg.jpeg" alt="Vista cortile interno" loading="lazy">
+                <img src="foto-5.jpg" alt="Vista cortile interno" loading="lazy">
             </div>
             <div class="gallery-item" onclick="openLightbox(5)">
-                <img src="foto-6.jpg.jpeg" alt="Dettagli dell'appartamento" loading="lazy">
+                <img src="foto-6.jpg" alt="Dettagli dell'appartamento" loading="lazy">
             </div>
         </div>
 
@@ -772,6 +845,46 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="reviewsTitle">Recensioni degli Ospiti</h2>
+            <p class="section-subtitle" data-i18n="reviewsSubtitle">Cosa dicono gli ospiti che hanno soggiornato qui</p>
+        </div>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text" data-i18n="review1Text">
+                    Federico è un host eccezionale, gentile e attento. E il suo appartamento, dotato di ogni comfort, è un vero gioiello! Tornerò sicuramente.
+                </p>
+                <div class="review-author">
+                    <strong>Stefano</strong>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text" data-i18n="review2Text">
+                    Tutto perfetto, Host molto gentile e premuroso.
+                </p>
+                <div class="review-author">
+                    <strong>Paolo</strong>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text" data-i18n="review3Text">
+                    Esperienza fantastica.
+                </p>
+                <div class="review-author">
+                    <strong>Antonino</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact">
         <div class="contact-content">
@@ -841,6 +954,11 @@
                 amenity7Desc: 'Disponibile in loco a pagamento',
                 amenity8Title: 'Vista Cortile',
                 amenity8Desc: 'Tranquillità e silenzio',
+                reviewsTitle: 'Recensioni degli Ospiti',
+                reviewsSubtitle: 'Cosa dicono gli ospiti che hanno soggiornato qui',
+                review1Text: 'Federico è un host eccezionale, gentile e attento. E il suo appartamento, dotato di ogni comfort, è un vero gioiello! Tornerò sicuramente.',
+                review2Text: 'Tutto perfetto, Host molto gentile e premuroso.',
+                review3Text: 'Esperienza fantastica.',
                 contactTitle: 'Prenota il Tuo Soggiorno',
                 contactText: 'Interessato a questo splendido appartamento? Contattami su WhatsApp per maggiori informazioni, disponibilità e per organizzare una visita.',
                 contactBtn2: 'Contatta Federico',
@@ -875,6 +993,11 @@
                 amenity7Desc: 'Available on-site for a fee',
                 amenity8Title: 'Courtyard View',
                 amenity8Desc: 'Peace and quiet',
+                reviewsTitle: 'Guest Reviews',
+                reviewsSubtitle: 'What our guests say about their stay',
+                review1Text: 'Federico is an exceptional host, kind and attentive. And his apartment, equipped with every comfort, is a true gem! I will definitely return.',
+                review2Text: 'Everything perfect, very kind and caring Host.',
+                review3Text: 'Fantastic experience.',
                 contactTitle: 'Book Your Stay',
                 contactText: 'Interested in this beautiful apartment? Contact me on WhatsApp for more information, availability, and to arrange a visit.',
                 contactBtn2: 'Contact Federico',
@@ -931,24 +1054,24 @@
             setLanguage(currentLang);
         });
 
-        // Gallery images array - CORRECTED WITH EXACT FILENAMES FROM GITHUB
+        // Gallery images array
         const galleryImages = [
-            { src: 'foto-1.jpg.jpeg', alt: 'Cucina moderna attrezzata' },
-            { src: 'foto-2.jpg.jpeg', alt: 'Zona living soppalcata' },
-            { src: 'foto-3.jpg.avif', alt: 'Camera da letto elegante' },
-            { src: 'foto-4.jpg.jpeg', alt: 'Bagno con vasca idromassaggio' },
-            { src: 'foto-5.jpg.jpeg', alt: 'Vista cortile interno' },
-            { src: 'foto-6.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
-            { src: 'foto-7.jpg.jpeg', alt: 'Vista dell\'appartamento' },
-            { src: 'foto-8.jpg.jpeg', alt: 'Dettagli interni' },
-            { src: 'foto-9.jpg.jpeg', alt: 'Spazi dell\'appartamento' },
-            { src: 'foto-10.jpg.jpeg', alt: 'Ambiente dell\'appartamento' },
-            { src: 'foto-11.jpg.avif', alt: 'Vista dell\'appartamento' },
-            { src: 'foto-12.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
-            { src: 'foto-13.jpg.avif', alt: 'Spazi dell\'appartamento' },
-            { src: 'foto-14.jpg.jpeg', alt: 'Vista dell\'appartamento' },
-            { src: 'foto-15.jpg.avif', alt: 'Ambiente dell\'appartamento' },
-            { src: 'foto-16.jpg.avif', alt: 'Dettagli dell\'appartamento' }
+            { src: 'foto-1.jpg', alt: 'Cucina moderna attrezzata' },
+            { src: 'foto-2.jpg', alt: 'Zona living soppalcata' },
+            { src: 'foto-3.jpg', alt: 'Camera da letto elegante' },
+            { src: 'foto-4.jpg', alt: 'Bagno con vasca idromassaggio' },
+            { src: 'foto-5.jpg', alt: 'Vista cortile interno' },
+            { src: 'foto-6.jpg', alt: 'Dettagli dell\'appartamento' },
+            { src: 'foto-7.jpg', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-8.jpg', alt: 'Dettagli interni' },
+            { src: 'foto-9.jpg', alt: 'Spazi dell\'appartamento' },
+            { src: 'foto-10.jpg', alt: 'Ambiente dell\'appartamento' },
+            { src: 'foto-11.jpg', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-12.jpg', alt: 'Dettagli dell\'appartamento' },
+            { src: 'foto-13.jpg', alt: 'Spazi dell\'appartamento' },
+            { src: 'foto-14.jpg', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-15.jpg', alt: 'Ambiente dell\'appartamento' },
+            { src: 'foto-16.jpg', alt: 'Dettagli dell\'appartamento' }
         ];
 
         let currentImageIndex = 0;
@@ -1069,8 +1192,8 @@
             });
         }, observerOptions);
 
-        // Observe amenity cards
-        document.querySelectorAll('.amenity-card').forEach(el => {
+        // Observe amenity and review cards
+        document.querySelectorAll('.amenity-card, .review-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -1079,3 +1202,4 @@
     </script>
 </body>
 </html>
+
