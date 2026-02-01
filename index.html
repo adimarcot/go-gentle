@@ -227,246 +227,218 @@
         }
 
         /* Gallery Section */
-        .gallery-section {
-            padding: 6rem 2rem;
+        .gallery {
+            padding: 5rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
         .section-title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 300;
-            text-align: center;
-            margin-bottom: 1rem;
             color: var(--color-primary);
+            margin-bottom: 1rem;
         }
 
         .section-subtitle {
-            text-align: center;
+            font-size: 1.1rem;
             color: var(--color-text-light);
-            font-size: 1.05rem;
-            margin-bottom: 4rem;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
 
-        /* Gallery Preview (Airbnb style) */
-        .gallery-preview {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
             border-radius: 12px;
-            overflow: hidden;
-            height: 500px;
-        }
-
-        .gallery-preview-main {
-            grid-row: 1 / 3;
-            position: relative;
-            overflow: hidden;
+            aspect-ratio: 4/3;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
         }
 
-        .gallery-preview-main:hover {
-            transform: scale(1.01);
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .gallery-preview-main img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
         }
 
-        .gallery-preview-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
-        .gallery-preview-item {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-preview-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-preview-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-preview-item-last {
-            position: relative;
-        }
-
-        .show-all-overlay {
+        .gallery-item::after {
+            content: '🔍';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background 0.3s ease;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 3rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
-        .gallery-preview-item-last:hover .show-all-overlay {
-            background: rgba(0, 0, 0, 0.75);
+        .gallery-item:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            display: flex;
+            width: fit-content;
+        }
+
+        .view-all-btn:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
         }
 
         /* Lightbox */
         .lightbox {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.95);
-            z-index: 10000;
-            animation: fadeIn 0.3s ease;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
         .lightbox.active {
-            display: flex;
-            flex-direction: column;
+            opacity: 1;
+            pointer-events: all;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .lightbox-header {
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
-            color: white;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
         }
 
         .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
             background: none;
             border: none;
             color: white;
-            font-size: 3rem;
+            font-size: 2.5rem;
             cursor: pointer;
-            padding: 0;
             width: 50px;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.3s ease;
-            line-height: 1;
+            transition: all 0.3s ease;
+            border-radius: 50%;
         }
 
         .lightbox-close:hover {
-            opacity: 0.7;
-        }
-
-        .lightbox-counter {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .lightbox-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 2rem;
-        }
-
-        .lightbox-image-container {
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-image-container img {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 8px;
-            transition: opacity 0.15s ease;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
         }
 
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border: none;
+            color: white;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             transition: all 0.3s ease;
-            z-index: 10;
         }
 
         .lightbox-nav:hover {
-            background: white;
+            background: var(--color-accent);
             transform: translateY(-50%) scale(1.1);
         }
 
         .lightbox-prev {
-            left: 2rem;
+            left: 20px;
         }
 
         .lightbox-next {
-            right: 2rem;
+            right: 20px;
         }
 
-        /* Description Section */
-        .description-section {
-            padding: 6rem 2rem;
-            background: white;
-        }
-
-        .description-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .description-text {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: var(--color-text);
-            margin-bottom: 3rem;
-            text-align: justify;
+        .lightbox-counter {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         /* Amenities Section */
-        .amenities-section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .amenities {
+            padding: 5rem 2rem;
+            background: white;
         }
 
         .amenities-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -474,89 +446,96 @@
         }
 
         .amenity-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
             text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            background: var(--color-bg);
             transition: all 0.3s ease;
-            border: 1px solid rgba(201, 169, 110, 0.2);
+            border: 1px solid transparent;
         }
 
         .amenity-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border-color: var(--color-accent);
+            border-color: var(--color-accent-light);
+            box-shadow: 0 8px 20px rgba(201, 169, 110, 0.15);
         }
 
         .amenity-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            filter: grayscale(0.3) brightness(0.8);
         }
 
         .amenity-title {
+            font-weight: 600;
             font-size: 1.1rem;
-            font-weight: 500;
             color: var(--color-primary);
             margin-bottom: 0.5rem;
         }
 
         .amenity-description {
-            font-size: 0.9rem;
             color: var(--color-text-light);
+            font-size: 0.95rem;
         }
 
         /* Contact Section */
-        .contact-section {
-            padding: 6rem 2rem;
+        .contact {
+            padding: 5rem 2rem;
             background: linear-gradient(135deg, var(--color-primary) 0%, #2d2926 100%);
             color: white;
             text-align: center;
         }
 
         .contact-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .contact-section .section-title {
-            color: white;
+        .contact-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
             margin-bottom: 1.5rem;
         }
 
         .contact-text {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
             margin-bottom: 2.5rem;
             color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
         }
 
-        .contact-whatsapp {
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1.5rem 3.5rem;
-            background: #25D366;
+            gap: 0.75rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--color-accent);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
         }
 
-        .contact-whatsapp:hover {
-            background: #1fb855;
+        .contact-btn:hover {
+            background: #b89555;
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
         }
 
-        .contact-name {
+        .contact-info {
             margin-top: 2rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--color-accent-light);
-            font-weight: 300;
         }
 
         /* Footer */
@@ -580,20 +559,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             z-index: 999;
+            cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
             animation: pulse 2s infinite;
         }
 
         .floating-whatsapp:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
         .floating-whatsapp svg {
@@ -602,72 +578,49 @@
             fill: white;
         }
 
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             .hero {
-                height: 80vh;
+                height: 70vh;
             }
 
-            .gallery-preview {
+            .gallery-grid {
                 grid-template-columns: 1fr;
-                height: auto;
-            }
-
-            .gallery-preview-main {
-                grid-row: auto;
-                height: 250px;
-            }
-
-            .gallery-preview-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .gallery-preview-item {
-                height: 120px;
             }
 
             .lightbox-nav {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
             }
 
             .lightbox-prev {
-                left: 1rem;
+                left: 10px;
             }
 
             .lightbox-next {
-                right: 1rem;
+                right: 10px;
             }
 
-            .lightbox-header {
-                padding: 1rem;
+            .contact-buttons {
+                flex-direction: column;
             }
 
-            .lightbox-content {
-                padding: 1rem;
-            }
-
-            .amenities-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header-content {
-                flex-wrap: wrap;
-            }
-
-            .header-right {
-                order: 3;
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .whatsapp-btn-header {
-                font-size: 0.85rem;
-                padding: 0.65rem 1.2rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
+            .floating-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
             }
         }
     </style>
@@ -676,15 +629,18 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo">Porta Romana Luxury</div>
+            <div class="logo" data-i18n="logoText">Porta Romana Luxury</div>
             <div class="header-right">
                 <div class="language-switcher">
                     <button class="lang-btn active" data-lang="it" onclick="setLanguage('it')">IT</button>
                     <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
                 </div>
-                <a href="https://wa.me/393386558551" class="whatsapp-btn-header" id="headerWhatsappBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
+                   class="whatsapp-btn-header" 
+                   target="_blank" 
+                   id="headerWhatsappBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
                     </svg>
                     <span data-i18n="contactBtn">Contattami</span>
                 </a>
@@ -695,110 +651,87 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-subtitle" data-i18n="heroSubtitle">Porta Romana • Bocconi • Centro</div>
-            <h1 class="hero-title" data-i18n="heroTitle">Appartamento Lusso<br>Porta Romana</h1>
+            <div class="hero-subtitle" data-i18n="heroSubtitle">Milano • Porta Romana • Bocconi</div>
+            <h1 class="hero-title" data-i18n="heroTitle">Eleganza Esclusiva nel Cuore di Milano</h1>
             <p class="hero-description" data-i18n="heroDescription">
-                Contesto esclusivo, finiture di pregio, a soli 3 minuti dalla metro di Porta Romana. L'eleganza incontra il comfort nel cuore di Milano.
+                Scopri questo raffinato appartamento situato in una delle zone più prestigiose di Milano. 
+                A soli 3 minuti a piedi dalla metropolitana, perfetto per chi cerca comfort e stile.
             </p>
-            <a href="#galleria" class="hero-cta">
-                <span data-i18n="heroCta">Scopri l'appartamento</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            <a href="#galleria" class="hero-cta" data-i18n="heroButton">
+                Scopri la Galleria
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="galleria" class="gallery-section">
-        <h2 class="section-title" data-i18n="galleryTitle">Galleria</h2>
-        <p class="section-subtitle" data-i18n="gallerySubtitle">Scopri gli spazi di questo esclusivo appartamento nel cuore di Milano</p>
+    <section class="gallery" id="galleria">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="galleryTitle">Galleria</h2>
+            <p class="section-subtitle" data-i18n="gallerySubtitle">Scopri gli spazi di questo esclusivo appartamento nel cuore di Milano</p>
+        </div>
         
-        <div class="gallery-preview">
-            <div class="gallery-preview-main" onclick="openLightbox(0)">
-                <img src="foto-1.jpg" alt="Cucina moderna attrezzata" loading="lazy">
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="foto-1.jpg.jpeg" alt="Cucina moderna attrezzata" loading="lazy">
             </div>
-            <div class="gallery-preview-grid">
-                <div class="gallery-preview-item" onclick="openLightbox(1)">
-                    <img src="foto-2.jpg" alt="Zona living soppalcata" loading="lazy">
-                </div>
-                <div class="gallery-preview-item" onclick="openLightbox(2)">
-                    <img src="foto-3.jpg" alt="Camera da letto elegante" loading="lazy">
-                </div>
-                <div class="gallery-preview-item" onclick="openLightbox(3)">
-                    <img src="foto-4.jpg" alt="Bagno con vasca idromassaggio" loading="lazy">
-                </div>
-                <div class="gallery-preview-item gallery-preview-item-last" onclick="openLightbox(4)">
-                    <img src="foto-5.jpg" alt="Vista cortile interno" loading="lazy">
-                    <div class="show-all-overlay">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="14" width="7" height="7"></rect>
-                            <rect x="3" y="14" width="7" height="7"></rect>
-                        </svg>
-                        <span data-i18n="showAllPhotos">Mostra tutte le 16 foto</span>
-                    </div>
-                </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="foto-2.jpg.jpeg" alt="Zona living soppalcata" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="foto-3.jpg.avif" alt="Camera da letto elegante" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="foto-4.jpg.jpeg" alt="Bagno con vasca idromassaggio" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <img src="foto-5.jpg.jpeg" alt="Vista cortile interno" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <img src="foto-6.jpg.jpeg" alt="Dettagli dell'appartamento" loading="lazy">
             </div>
         </div>
+
+        <a href="#" class="view-all-btn" onclick="openLightbox(0); return false;" data-i18n="viewAllBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M4 8h4M4 16h4M12 8h8M12 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Mostra tutte le 16 foto
+        </a>
     </section>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <div class="lightbox-header">
-            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <div class="lightbox-counter">
-                <span id="lightbox-current">1</span> / 16
-            </div>
-        </div>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
-            <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            <div class="lightbox-image-container">
-                <img id="lightbox-image" src="" alt="">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)">‹</button>
+            <img src="" alt="" class="lightbox-image" id="lightbox-image">
+            <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)">›</button>
+            <div class="lightbox-counter">
+                <span id="lightbox-current">1</span> / <span id="lightbox-total">16</span>
             </div>
-            <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
         </div>
     </div>
 
-    <!-- Description Section -->
-    <section class="description-section">
-        <div class="description-content">
-            <h2 class="section-title" data-i18n="descriptionTitle">L'Appartamento</h2>
-            <p class="description-text" data-i18n="descriptionText">
-                L'ingresso conduce ad un'ampia cucina moderna e completamente attrezzata con forno combinato a vapore, cantina, macchina del caffè, frigorifero e lavatrice, completa di pentole e stoviglie per ogni esigenza. Una comoda scala dalle linee essenziali e un ballatoio di ampio respiro permettono di raggiungere un'elegante zona living soppalcata, dotata di un confortevole divano letto e TV.
-                <br><br>
-                La camera da letto ospita un ampio letto ed è arricchita da una capiente armadiatura su misura che unisce funzionalità ed estetica. Lo spazioso bagno è un vero angolo di relax, con vasca idromassaggio e possibilità di cromoterapia per creare un'atmosfera luminosa in sintonia con il tuo stato d'animo. Un dettaglio singolare è la vista originale sulla camera da letto.
-                <br><br>
-                Il tutto in uno spazio tranquillo e silenzioso, con vista su un cortile interno piantumato: la soluzione perfetta per fuggire dallo stress cittadino e regalarsi un soggiorno all'insegna delle coccole e del benessere.
-            </p>
-        </div>
-    </section>
-
     <!-- Amenities Section -->
-    <section class="amenities-section">
-        <h2 class="section-title" data-i18n="amenitiesTitle">Servizi & Comfort</h2>
-        <p class="section-subtitle" data-i18n="amenitiesSubtitle">Tutto ciò che serve per un soggiorno perfetto</p>
+    <section class="amenities">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="amenitiesTitle">Comfort & Servizi</h2>
+        </div>
         
         <div class="amenities-grid">
             <div class="amenity-card">
                 <div class="amenity-icon">📶</div>
-                <h3 class="amenity-title" data-i18n="amenity1Title">Wi-Fi ad Alta Velocità</h3>
+                <h3 class="amenity-title" data-i18n="amenity1Title">Wi-Fi Alta Velocità</h3>
                 <p class="amenity-description" data-i18n="amenity1Desc">Connessione internet veloce e affidabile</p>
             </div>
             
             <div class="amenity-card">
                 <div class="amenity-icon">💼</div>
                 <h3 class="amenity-title" data-i18n="amenity2Title">Spazio Lavoro</h3>
-                <p class="amenity-description" data-i18n="amenity2Desc">Area dedicata per smart working</p>
+                <p class="amenity-description" data-i18n="amenity2Desc">Area dedicata per lavorare in smart working</p>
             </div>
             
             <div class="amenity-card">
@@ -816,7 +749,7 @@
             <div class="amenity-card">
                 <div class="amenity-icon">🧺</div>
                 <h3 class="amenity-title" data-i18n="amenity5Title">Lavatrice</h3>
-                <p class="amenity-description" data-i18n="amenity5Desc">Gratuita nell'alloggio</p>
+                <p class="amenity-description" data-i18n="amenity5Desc">A disposizione gratuita nell'appartamento</p>
             </div>
             
             <div class="amenity-card">
@@ -828,7 +761,7 @@
             <div class="amenity-card">
                 <div class="amenity-icon">🚗</div>
                 <h3 class="amenity-title" data-i18n="amenity7Title">Parcheggio</h3>
-                <p class="amenity-description" data-i18n="amenity7Desc">A pagamento in loco</p>
+                <p class="amenity-description" data-i18n="amenity7Desc">Disponibile in loco a pagamento</p>
             </div>
             
             <div class="amenity-card">
@@ -840,86 +773,92 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact">
         <div class="contact-content">
-            <h2 class="section-title" data-i18n="contactTitle">Prenota il Tuo Soggiorno</h2>
+            <h2 class="contact-title" data-i18n="contactTitle">Prenota il Tuo Soggiorno</h2>
             <p class="contact-text" data-i18n="contactText">
-                Interessato a questo splendido appartamento? Contattami su WhatsApp per maggiori informazioni, disponibilità e per organizzare una visita.
+                Interessato a questo splendido appartamento? Contattami su WhatsApp per maggiori informazioni, 
+                disponibilità e per organizzare una visita.
             </p>
-            <a href="https://wa.me/393386558551" class="contact-whatsapp" id="contactWhatsappBtn">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-                <span data-i18n="contactBtn2">Contatta Federico</span>
-            </a>
-            <p class="contact-name" data-i18n="contactName">Federico • +39 338 655 8551</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
+                   class="contact-btn" 
+                   target="_blank"
+                   id="contactWhatsappBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+                    </svg>
+                    <span data-i18n="contactBtn2">Contatta Federico</span>
+                </a>
+            </div>
+            <p class="contact-info" data-i18n="contactName">Federico • +39 338 655 8551</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p data-i18n="footerText">&copy; 2026 Appartamento Porta Romana Milano. Tutti i diritti riservati.</p>
+        <p data-i18n="footerText">© 2026 Appartamento Milano Porta Romana. Tutti i diritti riservati.</p>
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/393386558551" class="floating-whatsapp" aria-label="Contatta su WhatsApp" id="floatingWhatsappBtn">
-        <svg viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
+       class="floating-whatsapp" 
+       target="_blank"
+       id="floatingWhatsappBtn"
+       aria-label="Contattami su WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
         </svg>
     </a>
 
     <script>
-        // Translations object
+        // Translations
         const translations = {
             it: {
+                logoText: 'Porta Romana Luxury',
                 contactBtn: 'Contattami',
-                heroSubtitle: 'Porta Romana • Bocconi • Centro',
-                heroTitle: 'Appartamento Lusso<br>Porta Romana',
-                heroDescription: "Contesto esclusivo, finiture di pregio, a soli 3 minuti dalla metro di Porta Romana. L'eleganza incontra il comfort nel cuore di Milano.",
-                heroCta: "Scopri l'appartamento",
+                heroSubtitle: 'Milano • Porta Romana • Bocconi',
+                heroTitle: 'Eleganza Esclusiva nel Cuore di Milano',
+                heroDescription: 'Scopri questo raffinato appartamento situato in una delle zone più prestigiose di Milano. A soli 3 minuti a piedi dalla metropolitana, perfetto per chi cerca comfort e stile.',
+                heroButton: 'Scopri la Galleria',
                 galleryTitle: 'Galleria',
                 gallerySubtitle: 'Scopri gli spazi di questo esclusivo appartamento nel cuore di Milano',
-                showAllPhotos: 'Mostra tutte le 16 foto',
-                descriptionTitle: "L'Appartamento",
-                descriptionText: "L'ingresso conduce ad un'ampia cucina moderna e completamente attrezzata con forno combinato a vapore, cantina, macchina del caffè, frigorifero e lavatrice, completa di pentole e stoviglie per ogni esigenza. Una comoda scala dalle linee essenziali e un ballatoio di ampio respiro permettono di raggiungere un'elegante zona living soppalcata, dotata di un confortevole divano letto e TV.<br><br>La camera da letto ospita un ampio letto ed è arricchita da una capiente armadiatura su misura che unisce funzionalità ed estetica. Lo spazioso bagno è un vero angolo di relax, con vasca idromassaggio e possibilità di cromoterapia per creare un'atmosfera luminosa in sintonia con il tuo stato d'animo. Un dettaglio singolare è la vista originale sulla camera da letto.<br><br>Il tutto in uno spazio tranquillo e silenzioso, con vista su un cortile interno piantumato: la soluzione perfetta per fuggire dallo stress cittadino e regalarsi un soggiorno all'insegna delle coccole e del benessere.",
-                amenitiesTitle: 'Servizi & Comfort',
-                amenitiesSubtitle: 'Tutto ciò che serve per un soggiorno perfetto',
-                amenity1Title: 'Wi-Fi ad Alta Velocità',
+                viewAllBtn: 'Mostra tutte le 16 foto',
+                amenitiesTitle: 'Comfort & Servizi',
+                amenity1Title: 'Wi-Fi Alta Velocità',
                 amenity1Desc: 'Connessione internet veloce e affidabile',
                 amenity2Title: 'Spazio Lavoro',
-                amenity2Desc: 'Area dedicata per smart working',
+                amenity2Desc: 'Area dedicata per lavorare in smart working',
                 amenity3Title: 'Vasca Idromassaggio',
                 amenity3Desc: 'Relax con cromoterapia inclusa',
                 amenity4Title: 'Smart TV',
                 amenity4Desc: 'Intrattenimento moderno',
                 amenity5Title: 'Lavatrice',
-                amenity5Desc: "Gratuita nell'alloggio",
+                amenity5Desc: 'A disposizione gratuita nell\'appartamento',
                 amenity6Title: 'Aria Condizionata',
-                amenity6Desc: "Clima perfetto tutto l'anno",
+                amenity6Desc: 'Clima perfetto tutto l\'anno',
                 amenity7Title: 'Parcheggio',
-                amenity7Desc: 'A pagamento in loco',
+                amenity7Desc: 'Disponibile in loco a pagamento',
                 amenity8Title: 'Vista Cortile',
                 amenity8Desc: 'Tranquillità e silenzio',
                 contactTitle: 'Prenota il Tuo Soggiorno',
                 contactText: 'Interessato a questo splendido appartamento? Contattami su WhatsApp per maggiori informazioni, disponibilità e per organizzare una visita.',
                 contactBtn2: 'Contatta Federico',
                 contactName: 'Federico • +39 338 655 8551',
-                footerText: '© 2026 Appartamento Porta Romana Milano. Tutti i diritti riservati.',
-                whatsappMessage: "Ciao Federico, sono interessato all'appartamento a Milano Porta Romana. Vorrei avere maggiori informazioni."
+                footerText: '© 2026 Appartamento Milano Porta Romana. Tutti i diritti riservati.',
+                whatsappMessage: "Ciao Federico, sono interessato all'appartamento a Milano Porta Romana. Vorrei maggiori informazioni."
             },
             en: {
+                logoText: 'Porta Romana Luxury',
                 contactBtn: 'Contact Me',
-                heroSubtitle: 'Porta Romana • Bocconi • City Center',
-                heroTitle: 'Luxury Apartment<br>Porta Romana',
-                heroDescription: 'Exclusive setting, premium finishes, just 3 minutes from Porta Romana metro station. Elegance meets comfort in the heart of Milan.',
-                heroCta: 'Discover the apartment',
+                heroSubtitle: 'Milan • Porta Romana • Bocconi',
+                heroTitle: 'Exclusive Elegance in the Heart of Milan',
+                heroDescription: 'Discover this refined apartment located in one of Milan\'s most prestigious areas. Just 3 minutes walk from the metro, perfect for those seeking comfort and style.',
+                heroButton: 'Discover the Gallery',
                 galleryTitle: 'Gallery',
                 gallerySubtitle: 'Explore the spaces of this exclusive apartment in the heart of Milan',
-                showAllPhotos: 'Show all 16 photos',
-                descriptionTitle: 'The Apartment',
-                descriptionText: 'The entrance leads to a large modern kitchen fully equipped with a combined steam oven, wine cellar, coffee machine, refrigerator, and washing machine, complete with pots and dishes for all your needs. A comfortable staircase with clean lines and a spacious landing lead to an elegant lofted living area, featuring a comfortable sofa bed and TV.<br><br>The bedroom hosts a large bed and is enhanced by a spacious custom-built wardrobe that combines functionality and aesthetics. The spacious bathroom is a true relaxation corner, with a hydromassage tub and chromotherapy option to create a luminous atmosphere in tune with your mood. A unique detail is the original view of the bedroom.<br><br>All in a quiet and peaceful space, with a view of a planted internal courtyard: the perfect solution to escape city stress and enjoy a pampering stay focused on wellness.',
-                amenitiesTitle: 'Services & Amenities',
-                amenitiesSubtitle: 'Everything you need for a perfect stay',
+                viewAllBtn: 'Show all 16 photos',
+                amenitiesTitle: 'Comfort & Amenities',
                 amenity1Title: 'High-Speed Wi-Fi',
                 amenity1Desc: 'Fast and reliable internet connection',
                 amenity2Title: 'Workspace',
@@ -992,24 +931,24 @@
             setLanguage(currentLang);
         });
 
-        // Gallery images array
+        // Gallery images array - CORRECTED WITH EXACT FILENAMES FROM GITHUB
         const galleryImages = [
-            { src: 'foto-1.jpg', alt: 'Cucina moderna attrezzata' },
-            { src: 'foto-2.jpg', alt: 'Zona living soppalcata' },
-            { src: 'foto-3.jpg', alt: 'Camera da letto elegante' },
-            { src: 'foto-4.jpg', alt: 'Bagno con vasca idromassaggio' },
-            { src: 'foto-5.jpg', alt: 'Vista cortile interno' },
-            { src: 'foto-6.jpg', alt: 'Dettagli dell\'appartamento' },
-            { src: 'foto-7.jpg', alt: 'Vista dell\'appartamento' },
-            { src: 'foto-8.jpg', alt: 'Dettagli interni' },
-            { src: 'foto-9.jpg', alt: 'Spazi dell\'appartamento' },
-            { src: 'foto-10.jpg', alt: 'Ambiente dell\'appartamento' },
-            { src: 'foto-11.jpg', alt: 'Vista dell\'appartamento' },
-            { src: 'foto-12.jpg', alt: 'Dettagli dell\'appartamento' },
-            { src: 'foto-13.jpg', alt: 'Spazi dell\'appartamento' },
-            { src: 'foto-14.jpg', alt: 'Vista dell\'appartamento' },
-            { src: 'foto-15.jpg', alt: 'Ambiente dell\'appartamento' },
-            { src: 'foto-16.jpg', alt: 'Dettagli dell\'appartamento' }
+            { src: 'foto-1.jpg.jpeg', alt: 'Cucina moderna attrezzata' },
+            { src: 'foto-2.jpg.jpeg', alt: 'Zona living soppalcata' },
+            { src: 'foto-3.jpg.avif', alt: 'Camera da letto elegante' },
+            { src: 'foto-4.jpg.jpeg', alt: 'Bagno con vasca idromassaggio' },
+            { src: 'foto-5.jpg.jpeg', alt: 'Vista cortile interno' },
+            { src: 'foto-6.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
+            { src: 'foto-7.jpg.jpeg', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-8.jpg.jpeg', alt: 'Dettagli interni' },
+            { src: 'foto-9.jpg.jpeg', alt: 'Spazi dell\'appartamento' },
+            { src: 'foto-10.jpg.jpeg', alt: 'Ambiente dell\'appartamento' },
+            { src: 'foto-11.jpg.avif', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-12.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
+            { src: 'foto-13.jpg.avif', alt: 'Spazi dell\'appartamento' },
+            { src: 'foto-14.jpg.jpeg', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-15.jpg.avif', alt: 'Ambiente dell\'appartamento' },
+            { src: 'foto-16.jpg.avif', alt: 'Dettagli dell\'appartamento' }
         ];
 
         let currentImageIndex = 0;
