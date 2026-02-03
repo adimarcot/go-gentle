@@ -2,112 +2,114 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
-import { X, ChevronLeft, ChevronRight, ArrowRight, Wifi, Briefcase, Bath, Tv, WashingMachine, Snowflake, Car, Trees, Search } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Wifi, Briefcase, Bath, Tv, WashingMachine, Snowflake, Car, Trees, Star, MapPin, Phone } from "lucide-react"
 
 const translations = {
   it: {
-    logoText: "Porta Romana Luxury",
-    contactBtn: "Contattami",
-    heroSubtitle: "Milano • Porta Romana • Bocconi",
-    heroTitle: "Eleganza Esclusiva nel Cuore di Milano",
-    heroDescription:
-      "Scopri questo raffinato appartamento situato in una delle zone più prestigiose di Milano. A soli 3 minuti a piedi dalla metropolitana, perfetto per chi cerca comfort e stile.",
-    heroButton: "Scopri la Galleria",
-    galleryTitle: "Galleria",
-    gallerySubtitle: "Scopri gli spazi di questo esclusivo appartamento nel cuore di Milano",
-    viewAllBtn: "Mostra tutte le 16 foto",
-    amenitiesTitle: "Comfort & Servizi",
-    amenity1Title: "Wi-Fi Alta Velocità",
-    amenity1Desc: "Connessione internet veloce e affidabile",
-    amenity2Title: "Spazio Lavoro",
-    amenity2Desc: "Area dedicata per lavorare in smart working",
-    amenity3Title: "Vasca Idromassaggio",
-    amenity3Desc: "Relax con cromoterapia inclusa",
+    logoText: "GO GENTLE",
+    tagline: "Milano • Porta Romana",
+    contactBtn: "Prenota Ora",
+    heroSubtitle: "Appartamento Esclusivo",
+    heroTitle: "PORTA ROMANA",
+    heroDescription: "Un rifugio di eleganza nel cuore pulsante di Milano, dove il design contemporaneo incontra il comfort senza compromessi.",
+    heroButton: "Esplora",
+    galleryTitle: "La Residenza",
+    gallerySubtitle: "Scopri ogni dettaglio di questo esclusivo appartamento milanese",
+    viewAllBtn: "Vedi Tutte le Foto",
+    amenitiesTitle: "Servizi",
+    amenitiesSubtitle: "Ogni comfort per un soggiorno indimenticabile",
+    amenity1Title: "Wi-Fi Premium",
+    amenity1Desc: "Connessione ad alta velocità",
+    amenity2Title: "Area Lavoro",
+    amenity2Desc: "Spazio dedicato allo smart working",
+    amenity3Title: "Spa Privata",
+    amenity3Desc: "Vasca idromassaggio con cromoterapia",
     amenity4Title: "Smart TV",
-    amenity4Desc: "Intrattenimento moderno",
+    amenity4Desc: "Intrattenimento di ultima generazione",
     amenity5Title: "Lavatrice",
-    amenity5Desc: "A disposizione gratuita nell'appartamento",
-    amenity6Title: "Aria Condizionata",
-    amenity6Desc: "Clima perfetto tutto l'anno",
+    amenity5Desc: "Servizio incluso",
+    amenity6Title: "Clima",
+    amenity6Desc: "Temperatura ideale tutto l'anno",
     amenity7Title: "Parcheggio",
-    amenity7Desc: "Disponibile in loco a pagamento",
+    amenity7Desc: "Disponibile su richiesta",
     amenity8Title: "Vista Cortile",
-    amenity8Desc: "Tranquillità e silenzio",
-    reviewsTitle: "Recensioni degli Ospiti",
-    reviewsSubtitle: "Cosa dicono gli ospiti che hanno soggiornato qui",
-    review1Text:
-      "Federico è un host eccezionale, gentile e attento. E il suo appartamento, dotato di ogni comfort, è un vero gioiello! Tornerò sicuramente.",
-    review2Text: "Tutto perfetto, Host molto gentile e premuroso.",
-    review3Text: "Esperienza fantastica.",
-    contactTitle: "Prenota il Tuo Soggiorno",
-    contactText:
-      "Interessato a questo splendido appartamento? Contattami su WhatsApp per maggiori informazioni, disponibilità e per organizzare una visita.",
+    amenity8Desc: "Oasi di tranquillità",
+    reviewsTitle: "Testimonianze",
+    reviewsSubtitle: "L'esperienza dei nostri ospiti",
+    review1Text: "Federico è un host eccezionale, gentile e attento. E il suo appartamento, dotato di ogni comfort, è un vero gioiello! Tornerò sicuramente.",
+    review2Text: "Tutto perfetto, Host molto gentile e premuroso. L'appartamento è esattamente come nelle foto, pulitissimo e ben accessoriato.",
+    review3Text: "Esperienza fantastica. Posizione strategica, appartamento curato nei minimi dettagli. Consigliatissimo!",
+    contactTitle: "Inizia il Tuo Soggiorno",
+    contactText: "Contattaci per informazioni sulla disponibilità e per prenotare la tua esperienza esclusiva a Milano.",
     contactBtn2: "Contatta Federico",
-    contactName: "Federico • +39 338 655 8551",
-    footerText: "© 2026 Appartamento Milano Porta Romana. Tutti i diritti riservati.",
+    contactName: "Federico",
+    contactPhone: "+39 338 655 8551",
+    footerText: "© 2026 Go Gentle Milano. Tutti i diritti riservati.",
+    footerLocation: "Porta Romana, Milano, Italia",
     whatsappMessage: "Ciao Federico, sono interessato all'appartamento a Milano Porta Romana. Vorrei maggiori informazioni.",
   },
   en: {
-    logoText: "Porta Romana Luxury",
-    contactBtn: "Contact Me",
-    heroSubtitle: "Milan • Porta Romana • Bocconi",
-    heroTitle: "Exclusive Elegance in the Heart of Milan",
-    heroDescription:
-      "Discover this refined apartment located in one of Milan's most prestigious areas. Just 3 minutes walk from the metro, perfect for those seeking comfort and style.",
-    heroButton: "Discover the Gallery",
-    galleryTitle: "Gallery",
-    gallerySubtitle: "Explore the spaces of this exclusive apartment in the heart of Milan",
-    viewAllBtn: "Show all 16 photos",
-    amenitiesTitle: "Comfort & Amenities",
-    amenity1Title: "High-Speed Wi-Fi",
-    amenity1Desc: "Fast and reliable internet connection",
-    amenity2Title: "Workspace",
-    amenity2Desc: "Dedicated area for remote working",
-    amenity3Title: "Hydromassage Tub",
-    amenity3Desc: "Relaxation with chromotherapy included",
+    logoText: "GO GENTLE",
+    tagline: "Milan • Porta Romana",
+    contactBtn: "Book Now",
+    heroSubtitle: "Exclusive Apartment",
+    heroTitle: "PORTA ROMANA",
+    heroDescription: "A haven of elegance in the beating heart of Milan, where contemporary design meets uncompromising comfort.",
+    heroButton: "Explore",
+    galleryTitle: "The Residence",
+    gallerySubtitle: "Discover every detail of this exclusive Milanese apartment",
+    viewAllBtn: "View All Photos",
+    amenitiesTitle: "Amenities",
+    amenitiesSubtitle: "Every comfort for an unforgettable stay",
+    amenity1Title: "Premium Wi-Fi",
+    amenity1Desc: "High-speed connection",
+    amenity2Title: "Work Area",
+    amenity2Desc: "Dedicated smart working space",
+    amenity3Title: "Private Spa",
+    amenity3Desc: "Hydromassage tub with chromotherapy",
     amenity4Title: "Smart TV",
-    amenity4Desc: "Modern entertainment",
-    amenity5Title: "Washing Machine",
-    amenity5Desc: "Free in the apartment",
-    amenity6Title: "Air Conditioning",
-    amenity6Desc: "Perfect climate all year round",
+    amenity4Desc: "Latest generation entertainment",
+    amenity5Title: "Washer",
+    amenity5Desc: "Service included",
+    amenity6Title: "Climate",
+    amenity6Desc: "Ideal temperature year-round",
     amenity7Title: "Parking",
-    amenity7Desc: "Available on-site for a fee",
+    amenity7Desc: "Available on request",
     amenity8Title: "Courtyard View",
-    amenity8Desc: "Peace and quiet",
-    reviewsTitle: "Guest Reviews",
-    reviewsSubtitle: "What our guests say about their stay",
-    review1Text:
-      "Federico is an exceptional host, kind and attentive. And his apartment, equipped with every comfort, is a true gem! I will definitely return.",
-    review2Text: "Everything perfect, very kind and caring Host.",
-    review3Text: "Fantastic experience.",
-    contactTitle: "Book Your Stay",
-    contactText:
-      "Interested in this beautiful apartment? Contact me on WhatsApp for more information, availability, and to arrange a visit.",
+    amenity8Desc: "Oasis of tranquility",
+    reviewsTitle: "Testimonials",
+    reviewsSubtitle: "The experience of our guests",
+    review1Text: "Federico is an exceptional host, kind and attentive. And his apartment, equipped with every comfort, is a true gem! I will definitely return.",
+    review2Text: "Everything perfect, very kind and caring Host. The apartment is exactly as in the photos, very clean and well equipped.",
+    review3Text: "Fantastic experience. Strategic location, apartment with attention to every detail. Highly recommended!",
+    contactTitle: "Begin Your Stay",
+    contactText: "Contact us for availability information and to book your exclusive experience in Milan.",
     contactBtn2: "Contact Federico",
-    contactName: "Federico • +39 338 655 8551",
-    footerText: "© 2026 Porta Romana Milan Apartment. All rights reserved.",
+    contactName: "Federico",
+    contactPhone: "+39 338 655 8551",
+    footerText: "© 2026 Go Gentle Milano. All rights reserved.",
+    footerLocation: "Porta Romana, Milan, Italy",
     whatsappMessage: "Hi Federico, I'm interested in the apartment in Milan Porta Romana. I would like more information.",
   },
 }
 
 const galleryImages = [
-  { src: "/foto-1.jpg.jpeg", alt: "Cucina moderna attrezzata" },
-  { src: "/foto-2.jpg.jpeg", alt: "Zona living soppalcata" },
-  { src: "/foto-3.jpg.avif", alt: "Camera da letto elegante" },
-  { src: "/foto-4.jpg.jpeg", alt: "Bagno con vasca idromassaggio" },
-  { src: "/foto-5.jpg.jpeg", alt: "Vista cortile interno" },
-  { src: "/foto-6.jpg.jpeg", alt: "Dettagli dell'appartamento" },
-  { src: "/foto-7.jpg.jpeg", alt: "Vista dell'appartamento" },
-  { src: "/foto-8.jpg.jpeg", alt: "Dettagli interni" },
-  { src: "/foto-9.jpg.jpeg", alt: "Spazi dell'appartamento" },
-  { src: "/foto-10.jpg.jpeg", alt: "Ambiente dell'appartamento" },
-  { src: "/foto-11.jpg.avif", alt: "Vista dell'appartamento" },
-  { src: "/foto-12.jpg.jpeg", alt: "Dettagli dell'appartamento" },
-  { src: "/foto-13.jpg.avif", alt: "Spazi dell'appartamento" },
-  { src: "/foto-14.jpg.jpeg", alt: "Vista dell'appartamento" },
-  { src: "/foto-15.jpg.avif", alt: "Ambiente dell'appartamento" },
-  { src: "/foto-16.jpg.avif", alt: "Dettagli dell'appartamento" },
+  { src: "/foto-1.jpg.jpeg", alt: "Modern equipped kitchen" },
+  { src: "/foto-2.jpg.jpeg", alt: "Mezzanine living area" },
+  { src: "/foto-3.jpg.avif", alt: "Elegant bedroom" },
+  { src: "/foto-4.jpg.jpeg", alt: "Bathroom with hydromassage tub" },
+  { src: "/foto-5.jpg.jpeg", alt: "Internal courtyard view" },
+  { src: "/foto-6.jpg.jpeg", alt: "Apartment details" },
+  { src: "/foto-7.jpg.jpeg", alt: "Apartment view" },
+  { src: "/foto-8.jpg.jpeg", alt: "Interior details" },
+  { src: "/foto-9.jpg.jpeg", alt: "Apartment spaces" },
+  { src: "/foto-10.jpg.jpeg", alt: "Apartment environment" },
+  { src: "/foto-11.jpg.avif", alt: "Apartment view" },
+  { src: "/foto-12.jpg.jpeg", alt: "Apartment details" },
+  { src: "/foto-13.jpg.avif", alt: "Apartment spaces" },
+  { src: "/foto-14.jpg.jpeg", alt: "Apartment view" },
+  { src: "/foto-15.jpg.avif", alt: "Apartment environment" },
+  { src: "/foto-16.jpg.avif", alt: "Apartment details" },
 ]
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -125,6 +127,7 @@ export default function HomePage() {
   const [lang, setLang] = useState<"it" | "en">("it")
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [scrolled, setScrolled] = useState(false)
   const t = translations[lang]
 
   useEffect(() => {
@@ -132,6 +135,14 @@ export default function HomePage() {
     if (savedLang && (savedLang === "it" || savedLang === "en")) {
       setLang(savedLang)
     }
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const setLanguage = (newLang: "it" | "en") => {
@@ -185,172 +196,236 @@ export default function HomePage() {
   ]
 
   const reviews = [
-    { text: t.review1Text, author: "Stefano" },
-    { text: t.review2Text, author: "Paolo" },
-    { text: t.review3Text, author: "Antonino" },
+    { text: t.review1Text, author: "Stefano", date: "Gennaio 2026" },
+    { text: t.review2Text, author: "Paolo", date: "Dicembre 2025" },
+    { text: t.review3Text, author: "Antonino", date: "Novembre 2025" },
   ]
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#2d2926] font-sans">
+    <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-[#faf8f5]/95 backdrop-blur-sm z-50 py-3 px-4 md:px-8 border-b border-[#c9a96e]/20 animate-in slide-in-from-top duration-500">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
-          <div className="font-serif text-xl md:text-2xl font-semibold text-[#1a1614] tracking-wide">{t.logoText}</div>
-          <div className="flex items-center gap-4">
-            <div className="flex gap-1 bg-white rounded-full p-1 shadow-sm">
-              <button
-                onClick={() => setLanguage("it")}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  lang === "it" ? "bg-[#c9a96e] text-white" : "text-[#6b6560] hover:text-[#1a1614]"
-                }`}
-              >
-                IT
-              </button>
-              <button
-                onClick={() => setLanguage("en")}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  lang === "en" ? "bg-[#c9a96e] text-white" : "text-[#6b6560] hover:text-[#1a1614]"
-                }`}
-              >
-                EN
-              </button>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <div className="flex flex-col">
+              <span className={`font-serif text-2xl tracking-[0.3em] font-light transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
+                {t.logoText}
+              </span>
+              <span className={`text-[10px] tracking-[0.2em] uppercase transition-colors ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+                {t.tagline}
+              </span>
             </div>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#c9a96e] text-white rounded-full text-sm font-medium transition-all hover:bg-[#b89555] hover:-translate-y-0.5 shadow-md hover:shadow-lg"
-            >
-              <WhatsAppIcon className="w-5 h-5" />
-              <span>{t.contactBtn}</span>
-            </a>
+
+            {/* Navigation */}
+            <div className="flex items-center gap-6">
+              {/* Language Toggle */}
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setLanguage("it")}
+                  className={`px-2 py-1 text-xs tracking-wider transition-all ${
+                    lang === "it" 
+                      ? scrolled ? "text-foreground font-medium" : "text-white font-medium"
+                      : scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  IT
+                </button>
+                <span className={scrolled ? "text-muted-foreground" : "text-white/40"}>|</span>
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-2 py-1 text-xs tracking-wider transition-all ${
+                    lang === "en" 
+                      ? scrolled ? "text-foreground font-medium" : "text-white font-medium"
+                      : scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+
+              {/* CTA Button */}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-xs tracking-wider uppercase transition-all hover:bg-primary/90"
+              >
+                {t.contactBtn}
+              </a>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="mt-20 min-h-[70vh] md:min-h-[90vh] relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1a1614] to-[#2d2926]">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'><defs><pattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(201,169,110,0.1)' stroke-width='1'/></pattern></defs><rect width='1200' height='800' fill='url(%23grid)'/></svg>")`,
-          }}
-        />
-        <div className="relative z-10 text-center text-white max-w-4xl px-4 py-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <p className="text-sm md:text-base tracking-[3px] uppercase text-[#c9a96e] mb-4 font-medium">{t.heroSubtitle}</p>
-          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-4 text-balance">{t.heroTitle}</h1>
-          <p className="text-base md:text-lg leading-relaxed text-white/90 max-w-2xl mx-auto mb-8">{t.heroDescription}</p>
-          <a
-            href="#galleria"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#c9a96e] text-white rounded-full text-base font-medium transition-all hover:bg-[#b89555] hover:-translate-y-1 shadow-lg hover:shadow-xl"
-            onClick={(e) => {
-              e.preventDefault()
-              document.getElementById("galleria")?.scrollIntoView({ behavior: "smooth" })
-            }}
-          >
-            {t.heroButton}
-            <ArrowRight className="w-5 h-5" />
-          </a>
+      {/* Hero Section - Full viewport with large image */}
+      <section className="relative h-screen">
+        <div className="absolute inset-0">
+          <Image
+            src="/foto-2.jpg.jpeg"
+            alt="Luxury apartment interior"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+        </div>
+        
+        <div className="relative h-full flex flex-col justify-end pb-20 px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="max-w-2xl">
+            <p className="text-white/80 text-sm tracking-[0.3em] uppercase mb-4">
+              {t.heroSubtitle}
+            </p>
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-light tracking-wide mb-6">
+              {t.heroTitle}
+            </h1>
+            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-lg mb-10">
+              {t.heroDescription}
+            </p>
+            <button
+              onClick={() => document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" })}
+              className="group inline-flex items-center gap-4 text-white text-sm tracking-[0.2em] uppercase hover:gap-6 transition-all"
+            >
+              <span>{t.heroButton}</span>
+              <span className="w-12 h-px bg-white group-hover:w-16 transition-all" />
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 md:py-20 px-4 md:px-8 max-w-7xl mx-auto" id="galleria">
-        <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-[#1a1614] mb-4">{t.galleryTitle}</h2>
-          <p className="text-base md:text-lg text-[#6b6560] max-w-xl mx-auto">{t.gallerySubtitle}</p>
-        </div>
+      <section id="gallery" className="py-24 lg:py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="max-w-xl mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground font-light mb-4">
+              {t.galleryTitle}
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              {t.gallerySubtitle}
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
-          {galleryImages.slice(0, 6).map((image, index) => (
+          {/* Bento Gallery Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {/* Large featured image */}
             <div
-              key={index}
-              onClick={() => openLightbox(index)}
-              className="relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer shadow-md hover:shadow-xl transition-all hover:-translate-y-1 group"
+              onClick={() => openLightbox(0)}
+              className="col-span-2 row-span-2 relative aspect-square cursor-pointer group overflow-hidden"
             >
-              <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
-                <Search className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
-              </div>
+              <Image
+                src={galleryImages[0].src}
+                alt={galleryImages[0].alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
             </div>
-          ))}
-        </div>
 
-        <div className="flex justify-center">
-          <button
-            onClick={() => openLightbox(0)}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-[#1a1614] text-white rounded-full font-medium transition-all hover:bg-[#c9a96e] hover:-translate-y-0.5 shadow-md hover:shadow-lg"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="stroke-current">
-              <path d="M4 8h4M4 16h4M12 8h8M12 16h8" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-            {t.viewAllBtn}
-          </button>
+            {/* Smaller images */}
+            {galleryImages.slice(1, 5).map((image, index) => (
+              <div
+                key={index + 1}
+                onClick={() => openLightbox(index + 1)}
+                className="relative aspect-square cursor-pointer group overflow-hidden"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+              </div>
+            ))}
+          </div>
+
+          {/* View All Button */}
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => openLightbox(0)}
+              className="inline-flex items-center gap-3 px-8 py-4 border border-foreground text-foreground text-sm tracking-[0.15em] uppercase transition-all hover:bg-foreground hover:text-background"
+            >
+              {t.viewAllBtn}
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Lightbox */}
       {lightboxOpen && (
         <div
-          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center animate-in fade-in duration-200"
+          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center"
           onClick={(e) => {
             if (e.target === e.currentTarget) closeLightbox()
           }}
         >
-          <div className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center">
-            <button
-              onClick={closeLightbox}
-              className="absolute -top-12 right-0 text-white hover:bg-white/10 rounded-full p-2 transition-all hover:rotate-90"
-              aria-label="Close lightbox"
-            >
-              <X className="w-8 h-8" />
-            </button>
-            <button
-              onClick={() => changeLightboxImage(-1)}
-              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-sm text-white rounded-full w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-all hover:bg-[#c9a96e] hover:scale-110"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
-            </button>
-            <div className="relative w-[80vw] h-[70vh] md:w-[70vw] md:h-[80vh]">
-              <Image
-                src={galleryImages[currentImageIndex].src}
-                alt={galleryImages[currentImageIndex].alt}
-                fill
-                className="object-contain rounded-lg shadow-2xl"
-                priority
-              />
-            </div>
-            <button
-              onClick={() => changeLightboxImage(1)}
-              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-sm text-white rounded-full w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-all hover:bg-[#c9a96e] hover:scale-110"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
-            </button>
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white font-medium">
-              {currentImageIndex + 1} / {galleryImages.length}
-            </div>
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 text-white/80 hover:text-white p-2 transition-colors"
+            aria-label="Close lightbox"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          
+          <button
+            onClick={() => changeLightboxImage(-1)}
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white p-3 transition-colors"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-10 h-10" />
+          </button>
+          
+          <div className="relative w-[85vw] h-[75vh] md:w-[75vw] md:h-[85vh]">
+            <Image
+              src={galleryImages[currentImageIndex].src}
+              alt={galleryImages[currentImageIndex].alt}
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          
+          <button
+            onClick={() => changeLightboxImage(1)}
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white p-3 transition-colors"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-10 h-10" />
+          </button>
+          
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm tracking-wider">
+            {currentImageIndex + 1} / {galleryImages.length}
           </div>
         </div>
       )}
 
       {/* Amenities Section */}
-      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-[#1a1614]">{t.amenitiesTitle}</h2>
+      <section className="py-24 lg:py-32 bg-secondary">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center max-w-xl mx-auto mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground font-light mb-4">
+              {t.amenitiesTitle}
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              {t.amenitiesSubtitle}
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {/* Amenities Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {amenities.map((amenity, index) => (
-              <div
-                key={index}
-                className="text-center p-4 md:p-6 rounded-xl bg-[#faf8f5] border border-transparent transition-all hover:-translate-y-1 hover:border-[#e4d4b8] hover:shadow-lg"
-              >
-                <amenity.icon className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-[#c9a96e]" />
-                <h3 className="font-semibold text-sm md:text-base text-[#1a1614] mb-1">{amenity.title}</h3>
-                <p className="text-[#6b6560] text-xs md:text-sm">{amenity.desc}</p>
+              <div key={index} className="group text-center">
+                <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center border border-primary/30 group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300">
+                  <amenity.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-foreground font-medium text-sm tracking-wider uppercase mb-2">
+                  {amenity.title}
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  {amenity.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -358,24 +433,41 @@ export default function HomePage() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-16 md:py-20 px-4 md:px-8 bg-[#faf8f5]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-[#1a1614] mb-4">{t.reviewsTitle}</h2>
-            <p className="text-base md:text-lg text-[#6b6560] max-w-xl mx-auto">{t.reviewsSubtitle}</p>
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="max-w-xl mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground font-light mb-4">
+              {t.reviewsTitle}
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              {t.reviewsSubtitle}
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Reviews Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reviews.map((review, index) => (
               <div
                 key={index}
-                className="relative bg-white p-6 md:p-8 rounded-xl border border-[#c9a96e]/20 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-[#c9a96e]"
+                className="group p-8 border border-border hover:border-primary/40 transition-colors duration-300"
               >
-                <span className="absolute top-2 left-4 text-6xl text-[#c9a96e]/30 font-serif leading-none">"</span>
-                <div className="text-lg mb-4 tracking-wider">{"⭐".repeat(5)}</div>
-                <p className="text-[#2d2926] text-base leading-relaxed italic mb-4 relative z-10">{review.text}</p>
-                <div className="text-sm text-[#6b6560]">
-                  <strong className="text-[#1a1614] font-semibold">{review.author}</strong>
+                {/* Stars */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                
+                {/* Quote */}
+                <p className="text-foreground leading-relaxed mb-8 text-balance">
+                  "{review.text}"
+                </p>
+                
+                {/* Author */}
+                <div className="flex items-center justify-between pt-6 border-t border-border">
+                  <span className="font-medium text-foreground">{review.author}</span>
+                  <span className="text-muted-foreground text-sm">{review.date}</span>
                 </div>
               </div>
             ))}
@@ -384,35 +476,79 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 md:py-20 px-4 md:px-8 bg-gradient-to-br from-[#1a1614] to-[#2d2926] text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light mb-4">{t.contactTitle}</h2>
-          <p className="text-base md:text-lg leading-relaxed text-white/90 mb-8">{t.contactText}</p>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#c9a96e] text-white rounded-full text-base font-medium transition-all hover:bg-[#b89555] hover:-translate-y-1 shadow-lg hover:shadow-xl"
-          >
-            <WhatsAppIcon className="w-6 h-6" />
-            {t.contactBtn2}
-          </a>
-          <p className="mt-6 text-[#e4d4b8] text-sm">{t.contactName}</p>
+      <section className="relative py-24 lg:py-32 bg-primary text-primary-foreground overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="/foto-3.jpg.avif"
+            alt=""
+            fill
+            className="object-cover"
+          />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-6">
+              {t.contactTitle}
+            </h2>
+            <p className="text-primary-foreground/80 text-lg leading-relaxed mb-10">
+              {t.contactText}
+            </p>
+            
+            {/* Contact Card */}
+            <div className="inline-flex flex-col items-center gap-6 p-8 bg-white/10 backdrop-blur-sm">
+              <div className="text-center">
+                <p className="font-serif text-2xl mb-1">{t.contactName}</p>
+                <p className="text-primary-foreground/70 flex items-center justify-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  {t.contactPhone}
+                </p>
+              </div>
+              
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-accent-foreground text-sm tracking-[0.15em] uppercase transition-all hover:bg-accent/90"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                {t.contactBtn2}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1a1614] text-white/70 text-center py-6 px-4 text-sm">{t.footerText}</footer>
+      <footer className="py-12 bg-foreground text-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col items-center md:items-start">
+              <span className="font-serif text-xl tracking-[0.3em] font-light mb-1">
+                {t.logoText}
+              </span>
+              <span className="text-background/60 text-sm flex items-center gap-2">
+                <MapPin className="w-3 h-3" />
+                {t.footerLocation}
+              </span>
+            </div>
+            
+            <p className="text-background/60 text-sm">
+              {t.footerText}
+            </p>
+          </div>
+        </div>
+      </footer>
 
       {/* Floating WhatsApp Button */}
       <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 md:bottom-8 md:right-8 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg z-50 transition-all hover:scale-110 animate-pulse"
-        aria-label="Contattami su WhatsApp"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-accent text-accent-foreground rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform z-50"
+        aria-label="Contact via WhatsApp"
       >
-        <WhatsAppIcon className="w-7 h-7 md:w-8 md:h-8 text-white" />
+        <WhatsAppIcon className="w-7 h-7" />
       </a>
     </div>
   )
