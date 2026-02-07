@@ -317,6 +317,10 @@
             margin: 0 auto;
             display: flex;
             width: fit-content;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: var(--font-body);
         }
 
         .view-all-btn:hover {
@@ -748,31 +752,31 @@
         
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightbox(0)">
-    <img src="foto-1.jpg.jpeg" alt="Cucina moderna attrezzata" loading="lazy">
-</div>
-<div class="gallery-item" onclick="openLightbox(1)">
-    <img src="foto-2.jpg.jpeg" alt="Zona living soppalcata" loading="lazy">
-</div>
-<div class="gallery-item" onclick="openLightbox(2)">
-    <img src="foto-3.jpg.avif" alt="Camera da letto elegante" loading="lazy">
-</div>
-<div class="gallery-item" onclick="openLightbox(3)">
-    <img src="foto-4.jpg.jpeg" alt="Bagno con vasca idromassaggio" loading="lazy">
-</div>
-<div class="gallery-item" onclick="openLightbox(4)">
-    <img src="foto-5.jpg.jpeg" alt="Vista cortile interno" loading="lazy">
-</div>
-<div class="gallery-item" onclick="openLightbox(5)">
-    <img src="foto-6.jpg.jpeg" alt="Dettagli dell'appartamento" loading="lazy">
-</div>
+                <img src="foto-1.jpg.jpeg" alt="Cucina moderna attrezzata" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="foto-2.jpg.jpeg" alt="Zona living soppalcata" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="foto-3.jpg.avif" alt="Camera da letto elegante" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="foto-4.jpg.jpeg" alt="Bagno con vasca idromassaggio" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <img src="foto-5.jpg.jpeg" alt="Vista cortile interno" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <img src="foto-6.jpg.jpeg" alt="Dettagli dell'appartamento" loading="lazy">
+            </div>
         </div>
 
-        <a href="#" class="view-all-btn" onclick="openLightbox(0); return false;" data-i18n="viewAllBtn">
+        <button class="view-all-btn" onclick="openLightbox(0)" data-i18n="viewAllBtn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M4 8h4M4 16h4M12 8h8M12 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
             Mostra tutte le 16 foto
-        </a>
+        </button>
     </section>
 
     <!-- Lightbox -->
@@ -876,10 +880,20 @@
             <div class="review-card">
                 <div class="review-stars">⭐⭐⭐⭐⭐</div>
                 <p class="review-text" data-i18n="review3Text">
-                    Esperienza fantastica.
+                    A truly memorable experience!
                 </p>
                 <div class="review-author">
-                    <strong>Antonino</strong>
+                    <strong>Kate</strong>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text" data-i18n="review4Text">
+                    I spent 3 days at the place having a fantastic experience. The flat offers anything you need for your stay. Metro at 3 mins walking is a super plus and the area offers a wide range of services and restaurant. Thx to the host for his warm and professional welcome!
+                </p>
+                <div class="review-author">
+                    <strong>Julie</strong>
                 </div>
             </div>
         </div>
@@ -890,8 +904,7 @@
         <div class="contact-content">
             <h2 class="contact-title" data-i18n="contactTitle">Prenota il Tuo Soggiorno</h2>
             <p class="contact-text" data-i18n="contactText">
-                Interessato a questo splendido appartamento? Contattami su WhatsApp per maggiori informazioni, 
-                disponibilità e per organizzare una visita.
+                Contattami su WhatsApp per maggiori informazioni, disponibilità e per un preventivo dedicato.
             </p>
             <div class="contact-buttons">
                 <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
@@ -958,9 +971,10 @@
                 reviewsSubtitle: 'Cosa dicono gli ospiti che hanno soggiornato qui',
                 review1Text: 'Federico è un host eccezionale, gentile e attento. E il suo appartamento, dotato di ogni comfort, è un vero gioiello! Tornerò sicuramente.',
                 review2Text: 'Tutto perfetto, Host molto gentile e premuroso.',
-                review3Text: 'Esperienza fantastica.',
+                review3Text: 'A truly memorable experience!',
+                review4Text: 'I spent 3 days at the place having a fantastic experience. The flat offers anything you need for your stay. Metro at 3 mins walking is a super plus and the area offers a wide range of services and restaurant. Thx to the host for his warm and professional welcome!',
                 contactTitle: 'Prenota il Tuo Soggiorno',
-                contactText: 'Interessato a questo splendido appartamento? Contattami su WhatsApp per maggiori informazioni, disponibilità e per organizzare una visita.',
+                contactText: 'Contattami su WhatsApp per maggiori informazioni, disponibilità e per un preventivo dedicato.',
                 contactBtn2: 'Contatta Federico',
                 contactName: 'Federico • +39 338 655 8551',
                 footerText: '© 2026 Appartamento Milano Porta Romana. Tutti i diritti riservati.',
@@ -997,9 +1011,10 @@
                 reviewsSubtitle: 'What our guests say about their stay',
                 review1Text: 'Federico is an exceptional host, kind and attentive. And his apartment, equipped with every comfort, is a true gem! I will definitely return.',
                 review2Text: 'Everything perfect, very kind and caring Host.',
-                review3Text: 'Fantastic experience.',
+                review3Text: 'A truly memorable experience!',
+                review4Text: 'I spent 3 days at the place having a fantastic experience. The flat offers anything you need for your stay. Metro at 3 mins walking is a super plus and the area offers a wide range of services and restaurant. Thx to the host for his warm and professional welcome!',
                 contactTitle: 'Book Your Stay',
-                contactText: 'Interested in this beautiful apartment? Contact me on WhatsApp for more information, availability, and to arrange a visit.',
+                contactText: 'Contact me on WhatsApp for more information, availability, and for a personalized quote.',
                 contactBtn2: 'Contact Federico',
                 contactName: 'Federico • +39 338 655 8551',
                 footerText: '© 2026 Porta Romana Milan Apartment. All rights reserved.',
@@ -1007,7 +1022,27 @@
             }
         };
 
-        // Current language
+        // Gallery images array
+        const galleryImages = [
+            { src: 'foto-1.jpg.jpeg', alt: 'Cucina moderna attrezzata' },
+            { src: 'foto-2.jpg.jpeg', alt: 'Zona living soppalcata' },
+            { src: 'foto-3.jpg.avif', alt: 'Camera da letto elegante' },
+            { src: 'foto-4.jpg.jpeg', alt: 'Bagno con vasca idromassaggio' },
+            { src: 'foto-5.jpg.jpeg', alt: 'Vista cortile interno' },
+            { src: 'foto-6.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
+            { src: 'foto-7.jpg.jpeg', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-8.jpg.jpeg', alt: 'Dettagli interni' },
+            { src: 'foto-9.jpg.jpeg', alt: 'Spazi dell\'appartamento' },
+            { src: 'foto-10.jpg.jpeg', alt: 'Ambiente dell\'appartamento' },
+            { src: 'foto-11.jpg.avif', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-12.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
+            { src: 'foto-13.jpg.avif', alt: 'Spazi dell\'appartamento' },
+            { src: 'foto-14.jpg.jpeg', alt: 'Vista dell\'appartamento' },
+            { src: 'foto-15.jpg.avif', alt: 'Ambiente dell\'appartamento' },
+            { src: 'foto-16.jpg.avif', alt: 'Dettagli dell\'appartamento' }
+        ];
+
+        let currentImageIndex = 0;
         let currentLang = localStorage.getItem('language') || 'it';
 
         // Set language function
@@ -1053,29 +1088,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage(currentLang);
         });
-
-        // Gallery images array
-        const galleryImages = [
-        const galleryImages = [
-    { src: 'foto-1.jpg.jpeg', alt: 'Cucina moderna attrezzata' },
-    { src: 'foto-2.jpg.jpeg', alt: 'Zona living soppalcata' },
-    { src: 'foto-3.jpg.avif', alt: 'Camera da letto elegante' },
-    { src: 'foto-4.jpg.jpeg', alt: 'Bagno con vasca idromassaggio' },
-    { src: 'foto-5.jpg.jpeg', alt: 'Vista cortile interno' },
-    { src: 'foto-6.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
-    { src: 'foto-7.jpg.jpeg', alt: 'Vista dell\'appartamento' },
-    { src: 'foto-8.jpg.jpeg', alt: 'Dettagli interni' },
-    { src: 'foto-9.jpg.jpeg', alt: 'Spazi dell\'appartamento' },
-    { src: 'foto-10.jpg.jpeg', alt: 'Ambiente dell\'appartamento' },
-    { src: 'foto-11.jpg.avif', alt: 'Vista dell\'appartamento' },
-    { src: 'foto-12.jpg.jpeg', alt: 'Dettagli dell\'appartamento' },
-    { src: 'foto-13.jpg.avif', alt: 'Spazi dell\'appartamento' },
-    { src: 'foto-14.jpg.jpeg', alt: 'Vista dell\'appartamento' },
-    { src: 'foto-15.jpg.avif', alt: 'Ambiente dell\'appartamento' },
-    { src: 'foto-16.jpg.avif', alt: 'Dettagli dell\'appartamento' }
-];
-
-        let currentImageIndex = 0;
 
         // Open lightbox
         function openLightbox(index) {
@@ -1203,4 +1215,5 @@
     </script>
 </body>
 </html>
+
 
