@@ -6,7 +6,6 @@
     <title>Appartamento Lusso Porta Romana | Milano</title>
     <meta name="description" content="Appartamento di lusso a Milano, zona Porta Romana e Bocconi. Contesto esclusivo, finiture di pregio, 3 minuti dalla metro.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -111,6 +110,12 @@
             color: white;
         }
 
+        .header-ctas {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
         .whatsapp-btn-header {
             display: inline-flex;
             align-items: center;
@@ -130,6 +135,29 @@
             background: #b89555;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(201, 169, 110, 0.4);
+        }
+
+        /* Nuovo stile bottone Email Header */
+        .email-btn-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .email-btn-header:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 22, 20, 0.15);
         }
 
         /* Hero Section */
@@ -416,13 +444,8 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        .lightbox-prev {
-            left: 20px;
-        }
-
-        .lightbox-next {
-            right: 20px;
-        }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
 
         .lightbox-counter {
             position: absolute;
@@ -605,6 +628,21 @@
             box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
         }
 
+        /* Variante bottone email Contatti */
+        .contact-btn.email-btn {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            box-shadow: none;
+        }
+
+        .contact-btn.email-btn:hover {
+            background: white;
+            color: var(--color-primary);
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+        }
+
         .contact-info {
             margin-top: 2rem;
             font-size: 0.95rem;
@@ -663,6 +701,11 @@
                 gap: 1rem;
             }
 
+            .header-ctas {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
             .hero {
                 height: 70vh;
             }
@@ -673,20 +716,6 @@
 
             .reviews-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .lightbox-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-
-            .lightbox-prev {
-                left: 10px;
-            }
-
-            .lightbox-next {
-                right: 10px;
             }
 
             .contact-buttons {
@@ -703,7 +732,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-content">
             <div class="logo" data-i18n="logoText">Porta Romana Luxury</div>
@@ -712,20 +740,33 @@
                     <button class="lang-btn active" data-lang="it" onclick="setLanguage('it')">IT</button>
                     <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
                 </div>
-                <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
-                   class="whatsapp-btn-header" 
-                   target="_blank" 
-                   id="headerWhatsappBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
-                    </svg>
-                    <span data-i18n="contactBtn">Contattami</span>
-                </a>
+                
+                <div class="header-ctas">
+                    <a href="mailto:alessandro.dimarcotullio@gmail.com?subject=Info%20Appartamento%20Porta%20Romana" 
+                       class="email-btn-header" 
+                       target="_blank" 
+                       id="headerEmailBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span data-i18n="emailBtnHeader">Invia Mail</span>
+                    </a>
+                    
+                    <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
+                       class="whatsapp-btn-header" 
+                       target="_blank" 
+                       id="headerWhatsappBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+                        </svg>
+                        <span data-i18n="contactBtn">WhatsApp</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-subtitle" data-i18n="heroSubtitle">Milano • Porta Romana • Bocconi</div>
@@ -743,7 +784,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="gallery" id="galleria">
         <div class="section-header">
             <h2 class="section-title" data-i18n="galleryTitle">Galleria</h2>
@@ -779,7 +819,6 @@
         </button>
     </section>
 
-    <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
             <button class="lightbox-close" onclick="closeLightbox()">×</button>
@@ -792,7 +831,6 @@
         </div>
     </div>
 
-    <!-- Amenities Section -->
     <section class="amenities">
         <div class="section-header">
             <h2 class="section-title" data-i18n="amenitiesTitle">Comfort & Servizi</h2>
@@ -849,7 +887,6 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
     <section class="reviews">
         <div class="section-header">
             <h2 class="section-title" data-i18n="reviewsTitle">Recensioni degli Ospiti</h2>
@@ -899,12 +936,11 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact">
         <div class="contact-content">
             <h2 class="contact-title" data-i18n="contactTitle">Prenota il Tuo Soggiorno</h2>
             <p class="contact-text" data-i18n="contactText">
-                Contattami su WhatsApp per maggiori informazioni, disponibilità e per un preventivo dedicato.
+                Contattami su WhatsApp o via Mail per maggiori informazioni, disponibilità e per un preventivo dedicato.
             </p>
             <div class="contact-buttons">
                 <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
@@ -914,19 +950,28 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
                     </svg>
-                    <span data-i18n="contactBtn2">Contatta Federico</span>
+                    <span data-i18n="contactBtn2">Contatta su WhatsApp</span>
+                </a>
+                
+                <a href="mailto:alessandro.dimarcotullio@gmail.com?subject=Info%20Appartamento%20Porta%20Romana" 
+                   class="contact-btn email-btn" 
+                   target="_blank"
+                   id="contactEmailBtn2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span data-i18n="emailBtnContact">Invia Mail a Federico</span>
                 </a>
             </div>
             <p class="contact-info" data-i18n="contactName">Federico • +39 338 655 8551</p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p data-i18n="footerText">© 2026 Appartamento Milano Porta Romana. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/393386558551?text=Ciao%20Federico%2C%20sono%20interessato%20all'appartamento%20a%20Milano%20Porta%20Romana.%20Vorrei%20maggiori%20informazioni." 
        class="floating-whatsapp" 
        target="_blank"
@@ -942,7 +987,9 @@
         const translations = {
             it: {
                 logoText: 'Porta Romana Luxury',
-                contactBtn: 'Contattami',
+                contactBtn: 'WhatsApp',
+                emailBtnHeader: 'Invia Mail',
+                emailBtnContact: 'Invia Mail a Federico',
                 heroSubtitle: 'Milano • Porta Romana • Bocconi',
                 heroTitle: 'Eleganza Esclusiva nel Cuore di Milano',
                 heroDescription: 'Scopri questo raffinato appartamento situato in una delle zone più prestigiose di Milano. A soli 3 minuti a piedi dalla metropolitana, perfetto per chi cerca comfort e stile.',
@@ -974,15 +1021,17 @@
                 review3Text: 'A truly memorable experience!',
                 review4Text: 'I spent 3 days at the place having a fantastic experience. The flat offers anything you need for your stay. Metro at 3 mins walking is a super plus and the area offers a wide range of services and restaurant. Thx to the host for his warm and professional welcome!',
                 contactTitle: 'Prenota il Tuo Soggiorno',
-                contactText: 'Contattami su WhatsApp per maggiori informazioni, disponibilità e per un preventivo dedicato.',
-                contactBtn2: 'Contatta Federico',
+                contactText: 'Contattami su WhatsApp o via Mail per maggiori informazioni, disponibilità e per un preventivo dedicato.',
+                contactBtn2: 'Contatta su WhatsApp',
                 contactName: 'Federico • +39 338 655 8551',
                 footerText: '© 2026 Appartamento Milano Porta Romana. Tutti i diritti riservati.',
                 whatsappMessage: "Ciao Federico, sono interessato all'appartamento a Milano Porta Romana. Vorrei maggiori informazioni."
             },
             en: {
                 logoText: 'Porta Romana Luxury',
-                contactBtn: 'Contact Me',
+                contactBtn: 'WhatsApp',
+                emailBtnHeader: 'Email Me',
+                emailBtnContact: 'Email Federico',
                 heroSubtitle: 'Milan • Porta Romana • Bocconi',
                 heroTitle: 'Exclusive Elegance in the Heart of Milan',
                 heroDescription: 'Discover this refined apartment located in one of Milan\'s most prestigious areas. Just 3 minutes walk from the metro, perfect for those seeking comfort and style.',
@@ -1014,8 +1063,8 @@
                 review3Text: 'A truly memorable experience!',
                 review4Text: 'I spent 3 days at the place having a fantastic experience. The flat offers anything you need for your stay. Metro at 3 mins walking is a super plus and the area offers a wide range of services and restaurant. Thx to the host for his warm and professional welcome!',
                 contactTitle: 'Book Your Stay',
-                contactText: 'Contact me on WhatsApp for more information, availability, and for a personalized quote.',
-                contactBtn2: 'Contact Federico',
+                contactText: 'Contact me on WhatsApp or via Email for more information, availability, and for a personalized quote.',
+                contactBtn2: 'Contact on WhatsApp',
                 contactName: 'Federico • +39 338 655 8551',
                 footerText: '© 2026 Porta Romana Milan Apartment. All rights reserved.',
                 whatsappMessage: "Hi Federico, I'm interested in the apartment in Milan Porta Romana. I would like more information."
